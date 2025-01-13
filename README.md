@@ -1,3 +1,6 @@
+# Warning ⚠️ Project is officially discontinued 😢
+- Read the announcement made on 24th Dec 2024 at: https://www.bitcanna.io
+
 # BitCanna Blockchain
 [![compile bcna](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml) [![golangci-lint](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml)
 
