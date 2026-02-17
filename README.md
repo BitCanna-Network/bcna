@@ -1,16 +1,19 @@
-# Warning ⚠️ Project is officially discontinued 😢
-- Read the announcement made on 24th Dec 2024 at: https://www.bitcanna.io
 
-# BitCanna Blockchain
+
+# ℹ️ BitCanna Network is a NEW community project that is reviving the old Bitcanna project.
+- Read the announcement made on 24th Dec 2024 by _BitCanna Global_ at: https://www.bitcanna.io
+
+# BitCanna Network Blockchain
 [![compile bcna](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml) [![golangci-lint](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml)
 
-BitCanna provides a decentralized payment network, supply chain and trust network for the legal cannabis industry by utilizing the BCNA coin.
+BitCanna Network provides a decentralized payment network, supply chain and trust network for the legal cannabis industry by utilizing the BCNA coin.
 
 > [Current version (v4.0.1)](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.2) of our development uses Cosmos SDK v0.50.10 & CometBFT v0.38.15 & IBC-go v8.5.2
 
 These docs at Github are chain related. For more information about our coin, partners and roadmap visit:
-* Our website: https://www.bitcanna.io
-* Our docs platform: https://docs.bitcanna.io
+* Our website: https://www.bitcanna.network
+* Our Twitter/X: https://x.com/bitcannanetwork
+* Join to our Discord server: https://discord.gg/uqBRxSSmzR 
 
 ## Hardware Requirements
 Here are the minimal hardware configs required for running a validator/sentry node:
