@@ -1,6 +1,6 @@
 # Archived guide 
 # MAINNET: Setup up your validator and join *bitcanna-1*
-> IMPORTANT NOTE: You can sync a node almost instantly and automatically using our [StateSync script](https://github.com/BitCannaGlobal/cosmos-statesync_client)
+> IMPORTANT NOTE: You can sync a node almost instantly and automatically using our [StateSync script](https://github.com/BitCanna-Network/cosmos-statesync_client)
 
 
 **bcnad** is a blockchain application built using Cosmos SDK v.0.44.2 and Tendermint v.0.34.13.
@@ -27,7 +27,7 @@ By downloading the binary we avoid compiling the source code.
 * Download the latest version (v1.2) from Github:
     ```
     cd $HOME
-    wget https://github.com/BitCannaGlobal/bcna/releases/download/v1.2/bcnad
+    wget https://github.com/BitCanna-Network/bcna/releases/download/v1.2/bcnad
     chmod +x bcnad
     sudo mv bcnad /usr/local/bin/
     ```
@@ -39,7 +39,7 @@ By downloading the binary we avoid compiling the source code.
 **NOTE:** If you have downloaded the binary avoid _Step 0B_ and go to _Step_ 1
 ## Step 0B - Run a fullnode / validator by compiling source code (not recommended for new users)
 
-The updated instructions are always in our GitHub Readme page, click on this [link](https://github.com/BitCannaGlobal/bcna) to go there. 
+The updated instructions are always in our GitHub Readme page, click on this [link](https://github.com/BitCanna-Network/bcna) to go there. 
 
 ## Step 1 - Setting up the connection
 Instructions for setting up the connection with the BitCanna MainNet Blockchain
@@ -80,7 +80,7 @@ Your address will look something similar like this: `bcna14shzreglay98us0hep44hh
 4. **Download the Genesis** `genesis.json` file
     ```
     cd $HOME
-    curl -s https://raw.githubusercontent.com/BitCannaGlobal/bcna/main/genesis.json > ~/.bcna/config/genesis.json
+    curl -s https://raw.githubusercontent.com/BitCanna-Network/bcna/main/genesis.json > ~/.bcna/config/genesis.json
     ```
    Ensure you have the correct file. Run the SHA256SUM test:
     ```

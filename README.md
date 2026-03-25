@@ -4,11 +4,11 @@
 - Read the announcement made on 24th Dec 2024 by _BitCanna Global_ at: https://www.bitcanna.io
 
 # BitCanna Network Blockchain
-[![compile bcna](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/build.yml) [![golangci-lint](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/BitCannaGlobal/bcna/actions/workflows/golangci-lint.yml)
+[![compile bcna](https://github.com/BitCanna-Network/bcna/actions/workflows/build.yml/badge.svg)](https://github.com/BitCanna-Network/bcna/actions/workflows/build.yml) [![golangci-lint](https://github.com/BitCanna-Network/bcna/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/BitCanna-Network/bcna/actions/workflows/golangci-lint.yml)
 
 BitCanna Network provides a decentralized payment network, supply chain and trust network for the legal cannabis industry by utilizing the BCNA coin.
 
-> [Current version (v4.0.1)](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.2) of our development uses Cosmos SDK v0.50.10 & CometBFT v0.38.15 & IBC-go v8.5.2
+> [Current version (v4.0.1)](https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.2) of our development uses Cosmos SDK v0.50.10 & CometBFT v0.38.15 & IBC-go v8.5.2
 
 These docs at Github are chain related. For more information about our coin, partners and roadmap visit:
 * Our website: https://www.bitcanna.network
@@ -30,24 +30,24 @@ Here are the minimal hardware configs required for running a validator/sentry no
 > Please avoid cheap VPS providers as a main validator (we suggest using it as a cheap backup). We advise to use a shared dedicated server or a high-end NVMe VPS.
 
 ## Genesis file
-* [Link to Genesis file](https://raw.githubusercontent.com/BitCannaGlobal/bcna/main/genesis.json)
+* [Link to Genesis file](https://raw.githubusercontent.com/BitCanna-Network/bcna/main/genesis.json)
 
 ## Binary / Upgrades table
 
 | Upgrade Date | Upgrade Height | Binary Path | Release GitHub | Release notes |
 | -------- | -------- | -------- | ------- | ------- |
-| 11th Aug 2022 15.00h CET    | 2.092.453    | [v1.3.1](https://github.com/BitCannaGlobal/bcna/releases/download/v.1.3.1/bcnad)    | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v.1.3.1) | [-NA-]() |
-| 11th Aug 2022 15.00h CET    | 4.490.420    | [v1.4.1](https://github.com/BitCannaGlobal/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.4.1) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v141-codename-strangebuddheads-halt-chain-on-11th-of-august-2022) |
-| 7th Nov 2022 15.00h CET    | 5.787.420    | [v1.5.3](https://github.com/BitCannaGlobal/bcna/releases/download/v1.5.3/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.5.3) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v153-codename-trichomemonster-ica---from-v145) |
-| 2nd Mar 2023 16.20h CET    | 7.467.420   | [v1.6.0-fix](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.0-fix/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.0-fix) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v160-fix-codename-vigorous-grow---from-v153) |
-| 10th Mar 2023 18.40h CET    | 7.585.420   | [v1.6.3](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.3/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.3) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v161-codename-vigorous-grow-fix---from-v161) |
-| 30th May 2023 15.40h CEST    | 8.771.420   | [v1.7.0](https://github.com/BitCannaGlobal/bcna/releases/download/v1.7.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.7.0) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v170-codename-vigorous-grow-huckleberry-from-v163) |
-| 29th Jun 2023 16.20h CEST    | 9.209.420   | [v2.0.2](https://github.com/BitCannaGlobal/bcna/releases/download/v2.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v2.0.2) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
-| 25th Jan 2024 16.35h CET    | 12.288.420   | [v3.0.2](https://github.com/BitCannaGlobal/bcna/releases/download/v3.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.0.2) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
-| 10th May 2024 16.55h CET    | 13.846.420   | [v3.1.0](https://github.com/BitCannaGlobal/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.1.0) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
-| 25th Nov 2024 17.20h CET    | 16.782.000   | [v4.0.1](https://github.com/BitCannaGlobal/bcna/releases/download/v4.0.1/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.1) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
+| 11th Aug 2022 15.00h CET    | 2.092.453    | [v1.3.1](https://github.com/BitCanna-Network/bcna/releases/download/v.1.3.1/bcnad)    | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v.1.3.1) | [-NA-]() |
+| 11th Aug 2022 15.00h CET    | 4.490.420    | [v1.4.1](https://github.com/BitCanna-Network/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.4.1) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v141-codename-strangebuddheads-halt-chain-on-11th-of-august-2022) |
+| 7th Nov 2022 15.00h CET    | 5.787.420    | [v1.5.3](https://github.com/BitCanna-Network/bcna/releases/download/v1.5.3/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.5.3) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v153-codename-trichomemonster-ica---from-v145) |
+| 2nd Mar 2023 16.20h CET    | 7.467.420   | [v1.6.0-fix](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.0-fix/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.0-fix) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v160-fix-codename-vigorous-grow---from-v153) |
+| 10th Mar 2023 18.40h CET    | 7.585.420   | [v1.6.3](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.3/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.3) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v161-codename-vigorous-grow-fix---from-v161) |
+| 30th May 2023 15.40h CEST    | 8.771.420   | [v1.7.0](https://github.com/BitCanna-Network/bcna/releases/download/v1.7.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.7.0) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v170-codename-vigorous-grow-huckleberry-from-v163) |
+| 29th Jun 2023 16.20h CEST    | 9.209.420   | [v2.0.2](https://github.com/BitCanna-Network/bcna/releases/download/v2.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v2.0.2) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
+| 25th Jan 2024 16.35h CET    | 12.288.420   | [v3.0.2](https://github.com/BitCanna-Network/bcna/releases/download/v3.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.0.2) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
+| 10th May 2024 16.55h CET    | 13.846.420   | [v3.1.0](https://github.com/BitCanna-Network/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.1.0) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
+| 25th Nov 2024 17.20h CET    | 16.782.000   | [v4.0.1](https://github.com/BitCanna-Network/bcna/releases/download/v4.0.1/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.1) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
 
-> Current version: https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.2
+> Current version: https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.2
 
 # How to join `bitcanna-1` chain
 > Tip: At the end of this doc, you will find links with important info
@@ -55,7 +55,7 @@ Here are the minimal hardware configs required for running a validator/sentry no
 The necessary steps to join to `bitcanna-1` chain are:
 
 ## 1. Install / Compile last binary
-Check this [link](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md) to find instructions to install or compile our latest release.
+Check this [link](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md) to find instructions to install or compile our latest release.
 
 ##   2. Sync the chain
 You can sync the chain in your server to run a validator or a simple node/peer.
@@ -66,11 +66,11 @@ This is the recommended option for new nodes/validators.
 By downloading the StateSync script, you will sync the last blocks of the chain from two BitCanna StateSync servers. 
 
 The script will setup your folder and config if you start a fresh install. If your node/validator exist will make a backup, syncing and restoring the backup at the end of the script. Choose the best that fits you!
-* https://github.com/BitCannaGlobal/bcna/blob/main/2.1.statesync.md
+* https://github.com/BitCanna-Network/bcna/blob/main/2.1.statesync.md
 
 ###   2.2. Sync using a snapshot file
 This is an alternative way to get synced without having to download the entire chain block by block. Recommended for advanced users in Cosmos chains.
-* https://github.com/BitCannaGlobal/bcna/blob/main/2.2.snapshot.md
+* https://github.com/BitCanna-Network/bcna/blob/main/2.2.snapshot.md
 
 
 
@@ -134,7 +134,7 @@ bcnad start
 ```  
 ### 3.5. **Send the _Create validator_ TX:**
 
-> We recommend you read the [FAQ Chain's guide](https://github.com/BitCannaGlobal/bcna/blob/main/faq_chain.md) to understand all parameters - be aware that some values are permanent and cannot be changed at a later date.
+> We recommend you read the [FAQ Chain's guide](https://github.com/BitCanna-Network/bcna/blob/main/faq_chain.md) to understand all parameters - be aware that some values are permanent and cannot be changed at a later date.
 
 When you have your **node synced** and your **wallet funded with coins**, send the TX to become _validator_ (change _wallet_name_ and _moniker_):
 > You can use quotes to include spaces and more than two words
@@ -197,7 +197,7 @@ You can copy&paste the entire text above in a text file.
 Cosmovisor is a small process manager for Cosmos SDK application binaries to handle chain upgrades. It works for upgrades that has been approved through governance proposals. In these type of governance proposals the upgrade name and block height is included. If Cosmovisor finds the requirements for this upgrade in the logs of the chain binary, it stops the current binary, switch from the old binary to the new one, and finally restarts the node with the new binary.
 
 Follow this guide to install Cosmovisor on your node. 
-* https://github.com/BitCannaGlobal/bcna/blob/main/5.cosmovisor.md
+* https://github.com/BitCanna-Network/bcna/blob/main/5.cosmovisor.md
 
 # Links to important info
 
@@ -214,19 +214,19 @@ Follow this guide to install Cosmovisor on your node.
 * [Cosmostation Android](https://play.google.com/store/apps/details?id=wannabit.io.cosmostaion)
 
 ## Genesis file
-* [bitcanna-1](https://raw.githubusercontent.com/BitCannaGlobal/bcna/main/genesis.json)
+* [bitcanna-1](https://raw.githubusercontent.com/BitCanna-Network/bcna/main/genesis.json)
 
 ## Peer, seeds and public service providers
-* [BitCanna Chain Registry](https://github.com/BitCannaGlobal/bcna/blob/main/chain-registry.json) (Mandatory for Team's Delegation Program)
-* [BitCanna DEVET-1 Chain Registry](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/chain-registry.json) (Mandatory for Team's Delegation Program)
+* [BitCanna Chain Registry](https://github.com/BitCanna-Network/bcna/blob/main/chain-registry.json) (Mandatory for Team's Delegation Program)
+* [BitCanna DEVET-1 Chain Registry](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/chain-registry.json) (Mandatory for Team's Delegation Program)
 * [Cosmos Chain Registry](https://github.com/cosmos/chain-registry/tree/master/bitcanna)
 
 ## Archived Guides, FAQs & docs
 * [BitCanna Docs](https://docs.bitcanna.io)
-* [GitHub Testnet & DevNet archive](https://github.com/BitCannaGlobal/testnet-bcna-cosmos/tree/main/instructions)
-* [Current DevNet](https://github.com/BitCannaGlobal/bcna/tree/main/devnets/bitcanna-dev-1)
-* [Old Instructions guide](https://github.com/BitCannaGlobal/bcna/blob/main/archived_guides/instructions.md)
-* [How to perform a manual upgrade](https://github.com/BitCannaGlobal/bcna/blob/main/archived_guides/manual_update.md)
-* [How to perform an upgrade with Cosmovisor (v5.0)](https://github.com/BitCannaGlobal/bcna/blob/main/5.cosmovisor.md)
+* [GitHub Testnet & DevNet archive](https://github.com/BitCanna-Network/testnet-bcna-cosmos/tree/main/instructions)
+* [Current DevNet](https://github.com/BitCanna-Network/bcna/tree/main/devnets/bitcanna-dev-1)
+* [Old Instructions guide](https://github.com/BitCanna-Network/bcna/blob/main/archived_guides/instructions.md)
+* [How to perform a manual upgrade](https://github.com/BitCanna-Network/bcna/blob/main/archived_guides/manual_update.md)
+* [How to perform an upgrade with Cosmovisor (v5.0)](https://github.com/BitCanna-Network/bcna/blob/main/5.cosmovisor.md)
 
 ###### tags: `doc` `github`

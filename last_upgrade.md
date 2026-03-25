@@ -7,7 +7,7 @@
 >
 > **Important note: The tag name required for the upgrade is v4.0.1**
 
-Instructions and binaries at https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.1
+Instructions and binaries at https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.1
 
 ## v3.1.0 codename `ganjarevolutionburn` from v3.0.2
 
@@ -27,7 +27,7 @@ On chain proposal:
 * New burn module.
 * Discussion about this new module: [ignite/cli#4022](https://github.com/ignite/cli/discussions/4022)
 * Whitelist of hardcoded addresses that could be burned (protocol level)
-* Bump ibc/go from v7.3.2 to v7.4.0 (security advisory) - [V047 burn module bump deps #352](https://github.com/BitCannaGlobal/bcna/pull/352)
+* Bump ibc/go from v7.3.2 to v7.4.0 (security advisory) - [V047 burn module bump deps #352](https://github.com/BitCanna-Network/bcna/pull/352)
 * Bump Cosmos-sdk from v0.47.9 to v0.47.11
 * Bump CometBFT from v0.37.4 to v0.37.5
 
@@ -61,7 +61,7 @@ What will be upgraded and implemented:
 * Changes in DISTRIBUTION: The proposer receives no extra rewards. All fees are distributed among all the bonded validators, including the proposer, in proportion to their consensus power.
 
 For more information about the upgrade's content:
-https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v300-codename-ganjarevolution-from-v203
+https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v300-codename-ganjarevolution-from-v203
 
 
 ## v2.0.2 codename `wakeandbake` from v1.7.0
@@ -81,7 +81,7 @@ Those are the highlighted features/improvements/bug fixes:
 - Chore: Lint errors fixing by @RaulBernal in Chore: Lint errors fixing #172
 - Chore: some refactor coding task for BCNA v2 (Cosmos-SDK v0.46.12) for coming merging in main branch (current BCNA v1 repo (Cosmos-SDK v0.45.15))
 - Check and avoid duplicates at Bitcannaid.bcnaid by @RaulBernal in Check and avoid duplicates at Bitcannaid.bcnaid #171
-- New endpoint for BCNA module /BitCannaGlobal/bcna/bcna/bitcannaid/bcnaid/{bcnaid}
+- New endpoint for BCNA module /BitCanna-Network/bcna/bcna/bitcannaid/bcnaid/{bcnaid}
 - Code refactor to deprecate Ignite OpenAPIConsole deps
 - Refactor Gov Spam filter to reject v1 proposals, only v1beta1 are allowed for SDK v0.46
 - Ante handler to prevent spam proposals at Gov module
@@ -96,12 +96,12 @@ Those are the highlighted features/improvements/bug fixes:
 - Refactor tests and root & delete comments by @RaulBernal in Refactor tests and root & delete comments #112
 
 ### For detailed instructions check the release doc:
-* https://github.com/BitCannaGlobal/bcna/releases/tag/v2.0.2
+* https://github.com/BitCanna-Network/bcna/releases/tag/v2.0.2
 ### For detailed Cosmovisor install guide:
-* [Updated guide](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md)
+* [Updated guide](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md)
 
 
-https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md#v170-codename-vigorous-grow-huckleberry-from-v163
+https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md#v170-codename-vigorous-grow-huckleberry-from-v163
 
 ## v1.7.0 codename `vigorous-grow-huckleberry` from v1.6.3
 On chain proposal:
@@ -137,9 +137,9 @@ https://www.mintscan.io/bitcanna/blocks/8771420
 - Using Cosmos Keyring v1.2.0
 
 ### For detailed instructions check the release doc:
-* https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.1
+* https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.1
 ### For detailed Cosmovisor install guide:
-* [Updated guide](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md)
+* [Updated guide](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md)
 
 
 ----------
@@ -161,9 +161,9 @@ https://www.mintscan.io/bitcanna/blocks/8771420
 - Using Cosmos Keyring v1.2.0
 
 ### For detailed instructions check the release doc:
-* https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.0-fix
+* https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.0-fix
 ### For detailed Cosmovisor install guide:
-* [Updated guide](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md)
+* [Updated guide](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md)
 
 
 ----------
@@ -175,7 +175,7 @@ https://www.mintscan.io/bitcanna/blocks/8771420
 
 > Note: this is a planned upgrade, chain **will halts** at block **5787420**
 ### For detailed instructions check the release doc:
-* https://github.com/BitCannaGlobal/bcna/releases/tag/v1.5.3
+* https://github.com/BitCanna-Network/bcna/releases/tag/v1.5.3
 
 ## v1.4.5 from v1.4.2 (from Oct. 31th 2022)
 We've developed a new version with some updates (regarding SDK, Tendermint & IBC/go) to improve the security (Dragonberry) and stability (forks in IAVL) in our chain.
@@ -188,7 +188,7 @@ We've developed a new version with some updates (regarding SDK, Tendermint & IBC
 > Note: this is not a planned upgrade, chain won't be halted
 
 ### For detailed instructions check the release doc:
-* https://github.com/BitCannaGlobal/bcna/releases/tag/v1.4.5
+* https://github.com/BitCanna-Network/bcna/releases/tag/v1.4.5
 
 ## v1.4.2 from v1.4.1 (from Sept. 7th 2022)
 We've developed a new version with some updates (regarding SDK, Tendermint & IBC/go) to improve the security and stability in our chain.
@@ -210,7 +210,7 @@ Steps are:
     *1.1. Download the new binary*
     ```
     cd $HOME
-    wget -nc https://github.com/BitCannaGlobal/bcna/releases/download/v1.4.2/bcna_linux_amd64.tar.gz
+    wget -nc https://github.com/BitCanna-Network/bcna/releases/download/v1.4.2/bcna_linux_amd64.tar.gz
     ```
     1.1.2. Check the sha256sum for the downloaded file. 
     ```
@@ -231,7 +231,7 @@ Steps are:
     
     1.2.1. Download the source code using `git`
     ```
-    git clone https://github.com/BitCannaGlobal/bcna.git
+    git clone https://github.com/BitCanna-Network/bcna.git
     cd bcna
     git checkout v1.4.2
     make build   #it build the binary in build/ folder
@@ -306,9 +306,9 @@ sudo service bcnad stop
 ```
 2. Compile the binary from the source (2.1) or download it (2.2).
 
-    2.1. If you want to BUILD the binary from the source, detailed instructions can be found in this [DOC](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md) of our GitHub:
+    2.1. If you want to BUILD the binary from the source, detailed instructions can be found in this [DOC](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md) of our GitHub:
     ```
-    git clone https://github.com/BitCannaGlobal/bcna.git
+    git clone https://github.com/BitCanna-Network/bcna.git
     cd bcna && git checkout  v1.4.1
     make build
     ```
@@ -322,7 +322,7 @@ sudo service bcnad stop
     ```
     cd ~
     rm bcna_linux_amd64.tar.gz #delete old file if exist
-    wget -nc https://github.com/BitCannaGlobal/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz
+    wget -nc https://github.com/BitCanna-Network/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz
     ```
     2.2.1. Check the sha256sum for the downloaded file. 
     ```
@@ -357,11 +357,11 @@ sudo service bcnad stop
 
 ## Unattended (Cosmovisor) upgrade. Recommended.
 Cosmovisor is an hypervisor that check the logs and replaces binaries when the upgrades happens. 
-It run as service and replaces the `bcnad` service. A complete guide to config Cosmovisor with BitCanna chain is [here](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md)
+It run as service and replaces the `bcnad` service. A complete guide to config Cosmovisor with BitCanna chain is [here](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md)
 
 ### Step 1. Setup Cosmovisor folder
 > Attention! There  is a new official release of Cosmovisor ([check here v.1.2](https://github.com/cosmos/cosmos-sdk/releases/tag/cosmovisor%2Fv1.2.0))
-> If you need instructions to upgrade check this [doc](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md). 
+> If you need instructions to upgrade check this [doc](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md). 
 
 1. Create a new directory to store the new binary:
 ```
@@ -370,9 +370,9 @@ mkdir -p ${HOME}/.bcna/cosmovisor/upgrades/strangeBuddheads/bin
 
 2. Compile the binary from the source (2.1) or download it (2.2).
 
-    2.1. If you want to BUILD the binary from the source, detailed instructions can be found in this [DOC](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md) of our GitHub:
+    2.1. If you want to BUILD the binary from the source, detailed instructions can be found in this [DOC](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md) of our GitHub:
     ```
-    git clone https://github.com/BitCannaGlobal/bcna.git
+    git clone https://github.com/BitCanna-Network/bcna.git
     cd bcna && git checkout  v1.4.1
     make build
     ```
@@ -386,7 +386,7 @@ mkdir -p ${HOME}/.bcna/cosmovisor/upgrades/strangeBuddheads/bin
     ```
     cd ~
     rm bcna_linux_amd64.tar.gz #delete old file if exist
-    wget -nc https://github.com/BitCannaGlobal/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz
+    wget -nc https://github.com/BitCanna-Network/bcna/releases/download/v1.4.1/bcna_linux_amd64.tar.gz
     ```
     2.2.1 Check the sha256sum for the downloaded file. 
     ```
@@ -414,7 +414,7 @@ ${HOME}/.bcna/cosmovisor/upgrades/strangeBuddheads/bin/bcnad version
 
 
 ## EXTRA OPTIONAL STEP 1: <br>Install Cosmovisor v1.2
-If you want to update Cosmovisor from v1.1 to v1.2 follow the next instructions, for a new installation and setup of BCNA params check this [doc](https://github.com/BitCannaGlobal/bcna/blob/main/2.3.cosmovisor.md).
+If you want to update Cosmovisor from v1.1 to v1.2 follow the next instructions, for a new installation and setup of BCNA params check this [doc](https://github.com/BitCanna-Network/bcna/blob/main/2.3.cosmovisor.md).
 
 > CAUTION! Cosmovisor v1.2 has a bug and it doesn't get the uppercase in the binary folder path
 

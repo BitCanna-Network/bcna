@@ -7,8 +7,8 @@ import (
 	clienthelpers "cosmossdk.io/client/v2/helpers"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"github.com/BitCannaGlobal/bcna/app"
-	"github.com/BitCannaGlobal/bcna/cmd/bcnad/cmd"
+	"github.com/BitCanna-Network/bcna/app"
+	"github.com/BitCanna-Network/bcna/cmd/bcnad/cmd"
 )
 
 func main() {

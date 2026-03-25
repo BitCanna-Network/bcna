@@ -79,8 +79,8 @@ This will disconnect after passing P2P info so not include in your _persistent_p
 ## Docs
 - [Automatic StateSync Join `bitcanna-dev-1`](README.md)
 - [Manually Join `bitcanna-dev-1` by Avione Validator](awesome.md#Manual-setup)
-- [Upgrades - Last Upgrade](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc2.md)
-- [Setup Cosmovisor from zero](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md)
+- [Upgrades - Last Upgrade](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc2.md)
+- [Setup Cosmovisor from zero](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md)
 - [Node installation instructions by kjnodes](https://services.kjnodes.com/testnet/bitcanna/installation)
 - [Node installation instructions Mainnet/DEVNET by 🔥STAVR🔥](https://stavr-team.gitbook.io/nodes-guides/testnets/bitcanna/node-installation)
 - [Node upgrade instructions by kjnodes](https://services.kjnodes.com/testnet/bitcanna/upgrade)
@@ -123,7 +123,7 @@ go version
 ===================================================
 # Install App and build
 cd $HOME
-git clone https://github.com/BitCannaGlobal/bcna.git
+git clone https://github.com/BitCanna-Network/bcna.git
 cd bcna
 git checkout v1.5.3
 make install
@@ -152,7 +152,7 @@ sed -E -i 's/minimum-gas-prices = \".*\"/minimum-gas-prices = \"0.001ubcna\"/' $
 
 #download genesis
 cd $HOME
-wget -O $HOME/.bcna/config/genesis.json "https://raw.githubusercontent.com/bitcannaglobal/bcna/main/devnets/bitcanna-dev-1/genesis.json"
+wget -O $HOME/.bcna/config/genesis.json "https://raw.githubusercontent.com/BitCanna-Network/bcna/main/devnets/bitcanna-dev-1/genesis.json"
 
 ===================================================
 # Clean all before to start the chain

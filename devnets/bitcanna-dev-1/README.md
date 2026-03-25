@@ -18,31 +18,31 @@ In the next section you will find the params for P2P and a *step by step* guide 
 * `80ee9ed689bfb329cf21b94aa12978e073226db4@81.0.247.144:26656`
 
 #### Genesis file
-* [Link to Genesis file](https://raw.githubusercontent.com/BitCannaGlobal/bcna/main/devnets/bitcanna-dev-1/genesis.json)
+* [Link to Genesis file](https://raw.githubusercontent.com/BitCanna-Network/bcna/main/devnets/bitcanna-dev-1/genesis.json)
 
 #### Binary / Upgrades table
 
 | Upgrade Date | Upgrade Height | Binary Path | Release GitHub | Release doc |
 | -------- | -------- | -------- | ------- | ------- |
-| 22nd Dec 2022     | 0    | [v1.5.3](https://github.com/BitCannaGlobal/bcna/releases/download/v1.5.3/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.5.3) | x |
-| 22nd Feb 2023 15h UTC    | 956.837    | [v1.6.0-rc2](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.0-rc2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.0-rc2) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc2.md) |
-| 24nd Feb 2023 15h UTC    | 987.757    | [v1.6.0-rc3](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.0-rc3/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.0-rc3) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc3.md) |
-| 7th Mar 2023 15h UTC    | 1.159.488   | [v1.6.1](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.1/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.1) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.1.md) |
-| No breaking consensus   | x   | [v1.6.2](https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.2) | x |
-| No breaking consensus   | x   | v1.6.3-rc1   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v1.6.3-rc1/bcna_linux_amd64.tar.gz) | x |
-| 19th Apr 2023 14h UTC   | 1.831.901   | v2.0.1-rc6   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/download/v2.0.1-rc6/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v2.0.1-rc6) |
-| 9th Nov 2023 14h UTC   | 5.001.067   | v3.0.0-rc3   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/download/v3.0.0-rc3/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.0.0-rc3) |
-| No breaking consensus   | x   | v3.0.1-rc1   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.0.1-rc1/bcna_linux_amd64.tar.gz) | x |
-| No breaking consensus   | x   | v3.0.2-rc1   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.0.2-rc1/bcna_linux_amd64.tar.gz) | x |
-| 17th Apr 2024 16h UTC  | 7.400.000   | v3.1.0   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.1.0) |
-| No breaking consensus  | x   | v3.1.1   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/download/v3.1.1/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.1.1) |
-| 16th Sep 2024 16.20h UTC  | 9.749.840   | v4.0.0-rc3   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/download/v4.0.0-rc3/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.0-rc3) |
+| 22nd Dec 2022     | 0    | [v1.5.3](https://github.com/BitCanna-Network/bcna/releases/download/v1.5.3/bcna_linux_amd64.tar.gz)    | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.5.3) | x |
+| 22nd Feb 2023 15h UTC    | 956.837    | [v1.6.0-rc2](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.0-rc2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.0-rc2) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc2.md) |
+| 24nd Feb 2023 15h UTC    | 987.757    | [v1.6.0-rc3](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.0-rc3/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.0-rc3) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.0-rc3.md) |
+| 7th Mar 2023 15h UTC    | 1.159.488   | [v1.6.1](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.1/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.1) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/upgrade_v1.6.1.md) |
+| No breaking consensus   | x   | [v1.6.2](https://github.com/BitCanna-Network/bcna/releases/download/v1.6.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.2) | x |
+| No breaking consensus   | x   | v1.6.3-rc1   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v1.6.3-rc1/bcna_linux_amd64.tar.gz) | x |
+| 19th Apr 2023 14h UTC   | 1.831.901   | v2.0.1-rc6   |  [Link](https://github.com/BitCanna-Network/bcna/releases/download/v2.0.1-rc6/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v2.0.1-rc6) |
+| 9th Nov 2023 14h UTC   | 5.001.067   | v3.0.0-rc3   |  [Link](https://github.com/BitCanna-Network/bcna/releases/download/v3.0.0-rc3/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.0.0-rc3) |
+| No breaking consensus   | x   | v3.0.1-rc1   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.0.1-rc1/bcna_linux_amd64.tar.gz) | x |
+| No breaking consensus   | x   | v3.0.2-rc1   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.0.2-rc1/bcna_linux_amd64.tar.gz) | x |
+| 17th Apr 2024 16h UTC  | 7.400.000   | v3.1.0   |  [Link](https://github.com/BitCanna-Network/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.1.0) |
+| No breaking consensus  | x   | v3.1.1   |  [Link](https://github.com/BitCanna-Network/bcna/releases/download/v3.1.1/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.1.1) |
+| 16th Sep 2024 16.20h UTC  | 9.749.840   | v4.0.0-rc3   |  [Link](https://github.com/BitCanna-Network/bcna/releases/download/v4.0.0-rc3/bcna_linux_amd64.tar.gz) | [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.0-rc3) |
 
 #### More DEVNET-1 resources
 * [Link to AWESOME doc](awesome.md)
 * [Link to manual set-up by Aviaone Validator](awesome.md#Manual-setup)
 * [Link to setup and other tools by KonsorTech](https://github.com/konsortech/Node/tree/main/Testnet/Bitcanna)
-* [Link to setup Cosmovisor for DEVNET-1](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md)
+* [Link to setup Cosmovisor for DEVNET-1](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md)
 
 ## Running a validator on **bitcanna-dev-1** using StateSync
 * Before you start, you want to ensure your system is updated.  Besides other utilities you can install `jq` which is a utility to read and navigate JSON files and output. Also remove the `.bcna` folder, take in consideration first NOTES in this doc.
@@ -60,7 +60,7 @@ By running the statesync script we download the latest binary (v1.5.3) and sync 
 1. **Download the statesync script** for new peers from Github:
     ```
     cd ~
-    wget https://raw.githubusercontent.com/BitCannaGlobal/cosmos-statesync_client/main/statesync_DEVNET-1_client_linux_new.sh
+    wget https://raw.githubusercontent.com/BitCanna-Network/cosmos-statesync_client/main/statesync_DEVNET-1_client_linux_new.sh
     ```
 2. **Run the script**: 
     ```

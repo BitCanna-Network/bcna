@@ -7,7 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/network"
 	"github.com/stretchr/testify/require"
 
-	"github.com/BitCannaGlobal/bcna/app"
+	"github.com/BitCanna-Network/bcna/app"
 )
 
 type (

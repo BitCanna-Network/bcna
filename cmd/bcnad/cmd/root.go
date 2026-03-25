@@ -20,7 +20,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/BitCannaGlobal/bcna/app"
+	"github.com/BitCanna-Network/bcna/app"
 )
 
 // NewRootCmd creates a new root command for bcnad. It is called once in the main function.

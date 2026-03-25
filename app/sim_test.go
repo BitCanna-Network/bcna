@@ -32,7 +32,7 @@ import (
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
 
-	"github.com/BitCannaGlobal/bcna/app"
+	"github.com/BitCanna-Network/bcna/app"
 )
 
 const (

@@ -35,4 +35,3 @@ genesis:
          - denom: "ubcna"
            amount: "10000000"
  keyring-backend: test/os
-

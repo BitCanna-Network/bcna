@@ -19,7 +19,7 @@ https://testnet.ping.pub/bitcanna/gov/2
 ```
 cd ~
 rm -f ./bcnad && rm -f ./bcna_linux_amd64.tar.gz #clean the previous downloads
-wget -nc https://github.com/BitCannaGlobal/bcna/releases/download/v1.6.0-rc2/bcna_linux_amd64.tar.gz
+wget -nc https://github.com/BitCanna-Network/bcna/releases/download/v1.6.0-rc2/bcna_linux_amd64.tar.gz
 ```
 2) Check the sha256sum. 
 ```
@@ -71,9 +71,9 @@ sudo journalctl -fu bcnad -o cat
 ## Option 2. Cosmovisor (unattended) upgrade. 
 This section of the guide provides instructions on how to perform an **automated** upgrade of the binaries after a governance proposal has been approved for a chain update.
 
-For detailed instructions on how to set up Cosmovisor for the first time, please follow [this link](https://github.com/BitCannaGlobal/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md).
+For detailed instructions on how to set up Cosmovisor for the first time, please follow [this link](https://github.com/BitCanna-Network/bcna/blob/main/devnets/bitcanna-dev-1/cosmovisor_install.md).
 
-This guide shows how to download the newest binary. If you want to build the binary from the source, please refer to [this link](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md#option-2-compile-instructions) for detailed instructions.
+This guide shows how to download the newest binary. If you want to build the binary from the source, please refer to [this link](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md#option-2-compile-instructions) for detailed instructions.
 
 ### Setup Cosmovisor folder
 Download the upgraded binary as mentioned in the beginning of this guide before continuing with this step.
@@ -96,9 +96,9 @@ And check the path of the binary file.
 
 ## Build the binary from the source code
 
-For detailed instructions on how to build the binary from the source code, please refer to [this link](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md#option-2-compile-instructions).
+For detailed instructions on how to build the binary from the source code, please refer to [this link](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md#option-2-compile-instructions).
 ```
-    git clone https://github.com/BitCannaGlobal/bcna.git
+    git clone https://github.com/BitCanna-Network/bcna.git
     cd bcna
     git checkout v1.6.0-rc2
     make build && make install 

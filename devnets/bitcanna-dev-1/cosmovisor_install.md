@@ -13,7 +13,7 @@ This guide will explain how to install Cosmovisor and prepare for a future chain
 
 ## Step 1. Download or compile Cosmovisor
 
-The easiest option to install Cosmovisor is by downloading the pre-compiled binary. Alternatively, users with more advanced technical knowledge can install Go on their system and compile Cosmovisor from the source. For a full guide to install Go, please refer to [this link](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md#option-2-compile-instructions).
+The easiest option to install Cosmovisor is by downloading the pre-compiled binary. Alternatively, users with more advanced technical knowledge can install Go on their system and compile Cosmovisor from the source. For a full guide to install Go, please refer to [this link](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md#option-2-compile-instructions).
 
 **Option 1:** Download the pre-compiled Cosmovisor binary:
 
@@ -76,12 +76,12 @@ The output should contain lines similar to these:
 
 ### 3.) Download the updated `bcnad` binaries and move it to the designated directory.
 
-This guide explains how to download the pre-compiled binary. If you want to build the binary from the source, please refer to [this link](https://github.com/BitCannaGlobal/bcna/blob/main/1.install-compile.md#option-2-compile-instructions)
+This guide explains how to download the pre-compiled binary. If you want to build the binary from the source, please refer to [this link](https://github.com/BitCanna-Network/bcna/blob/main/1.install-compile.md#option-2-compile-instructions)
 
 ```
 cd ~
 rm -f bcnad #remove the previous downloads
-wget https://github.com/BitCannaGlobal/bcna/releases/download/v3.1.0-rc2/bcna_linux_amd64.tar.gz
+wget https://github.com/BitCanna-Network/bcna/releases/download/v3.1.0-rc2/bcna_linux_amd64.tar.gz
 ```
 Check the sha256sum.
 ```
