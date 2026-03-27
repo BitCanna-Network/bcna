@@ -1,6 +1,6 @@
 ARG IMG_TAG=latest
 ARG PLATFORM="linux/amd64"
-ARG GO_VERSION="1.23.1"
+ARG GO_VERSION="1.24.13"
 ARG RUNNER_IMAGE="gcr.io/distroless/static"
 
 FROM --platform=${PLATFORM} golang:${GO_VERSION}-alpine3.20 as builder
@@ -13,11 +13,11 @@ COPY . .
 # For more details see https://github.com/CosmWasm/wasmvm#builds-of-libwasmvm
 ARG ARCH=x86_64
 # See https://github.com/CosmWasm/wasmvm/releases
-ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.4/libwasmvm_muslc.aarch64.a /lib/libwasmvm_muslc.aarch64.a
-ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.4/libwasmvm_muslc.x86_64.a /lib/libwasmvm_muslc.x86_64.a
-#ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.4/libwasmvmstatic_darwin.a /lib/libwasmvm_muslc.darwin.a
-RUN sha256sum /lib/libwasmvm_muslc.aarch64.a | grep 090b97641157fae1ae45e7ed368a1a8c091f3fef67958d3bc7c2fa7e7c54b6b4
-RUN sha256sum /lib/libwasmvm_muslc.x86_64.a | grep a4a3d09b36fabb65b119d5ba23442c23694401fcbee4451fe6b7e22e325a4bac
+ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.5/libwasmvm_muslc.aarch64.a /lib/libwasmvm_muslc.aarch64.a
+ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.5/libwasmvm_muslc.x86_64.a /lib/libwasmvm_muslc.x86_64.a
+#ADD https://github.com/CosmWasm/wasmvm/releases/download/v2.1.5/libwasmvmstatic_darwin.a /lib/libwasmvm_muslc.darwin.a
+RUN sha256sum /lib/libwasmvm_muslc.aarch64.a | grep 1bad0e3f9b72603082b8e48307c7a319df64ca9e26976ffc7a3c317a08fe4b1a
+RUN sha256sum /lib/libwasmvm_muslc.x86_64.a | grep c6612d17d82b0997696f1076f6d894e339241482570b9142f29b0d8f21b280bf
 #RUN sha256sum /lib/libwasmvm_muslc.darwin.a | grep f7361db078218eb31ebaeab71a6c242034a3709886848596078d132ac7e08e36
 RUN cp /lib/libwasmvm_muslc.${ARCH}.a /lib/libwasmvm_muslc.a
 
