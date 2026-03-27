@@ -8,7 +8,7 @@
 
 BitCanna Network provides a decentralized payment network, supply chain and trust network for the legal cannabis industry by utilizing the BCNA coin.
 
-> [Current version (v4.0.1)](https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.2) of our development uses Cosmos SDK v0.50.10 & CometBFT v0.38.15 & IBC-go v8.5.2
+> [Current version (v5.0.0)](https://github.com/BitCanna-Network/bcna/releases/tag/v5.0.0) of our development uses Cosmos SDK v0.53.6 & CometBFT v0.38.19 & IBC-go v8.8.0
 
 These docs at Github are chain related. For more information about our coin, partners and roadmap visit:
 * Our website: https://www.bitcanna.network
@@ -24,8 +24,8 @@ Here are the minimal hardware configs required for running a validator/sentry no
 * 400 Mbit/s bandwidth (800Mbit/s - 1Gbit/s recommended)
 
 ## Software Requirements
-* Linux server (Ubuntu 20/22 server recommended)
-* Go version v1.23.3
+* Linux server (Ubuntu 22/24 server recommended)
+* Go version v1.24.13
 
 > Please avoid cheap VPS providers as a main validator (we suggest using it as a cheap backup). We advise to use a shared dedicated server or a high-end NVMe VPS.
 
@@ -46,8 +46,10 @@ Here are the minimal hardware configs required for running a validator/sentry no
 | 25th Jan 2024 16.35h CET    | 12.288.420   | [v3.0.2](https://github.com/BitCanna-Network/bcna/releases/download/v3.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.0.2) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
 | 10th May 2024 16.55h CET    | 13.846.420   | [v3.1.0](https://github.com/BitCanna-Network/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v3.1.0) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
 | 25th Nov 2024 17.20h CET    | 16.782.000   | [v4.0.1](https://github.com/BitCanna-Network/bcna/releases/download/v4.0.1/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.1) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
+| YYth XXX 2026 17.20h CET    | XX.XXXX.000   | [v5.0.0](https://github.com/BitCanna-Network/bcna/releases/download/v5.0.0/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCanna-Network/bcna/releases/tag/v5.0.0) | [Doc](https://github.com/BitCanna-Network/bcna/blob/main/last_upgrade.md) |
 
-> Current version: https://github.com/BitCanna-Network/bcna/releases/tag/v4.0.2
+
+> Current version: https://github.com/BitCanna-Network/bcna/releases/tag/v5.0.0
 
 # How to join `bitcanna-1` chain
 > Tip: At the end of this doc, you will find links with important info
