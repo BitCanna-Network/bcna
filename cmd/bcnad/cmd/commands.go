@@ -4,6 +4,11 @@ import (
 	"errors"
 	"io"
 
+	"github.com/CosmWasm/wasmd/x/wasm"
+	wasmcli "github.com/CosmWasm/wasmd/x/wasm/client/cli"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+
 	"cosmossdk.io/log"
 	confixcmd "cosmossdk.io/tools/confix/cmd"
 	dbm "github.com/cosmos/cosmos-db"
@@ -18,14 +23,10 @@ import (
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
-	"github.com/cosmos/cosmos-sdk/x/crisis"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 
-	"github.com/BitCanna-Network/bcna/app"
-	"github.com/CosmWasm/wasmd/x/wasm"
-	wasmcli "github.com/CosmWasm/wasmd/x/wasm/client/cli"
+	"bcna/app"
 )
 
 func initRootCmd(
@@ -35,19 +36,22 @@ func initRootCmd(
 ) {
 	rootCmd.AddCommand(
 		genutilcli.InitCmd(basicManager, app.DefaultNodeHome),
-		NewInPlaceTestnetCmd(addModuleInitFlags),
+		NewInPlaceTestnetCmd(),
+		NewTestnetMultiNodeCmd(basicManager, banktypes.GenesisBalancesIterator{}),
 		debug.Cmd(),
 		confixcmd.ConfigCommand(),
 		pruning.Cmd(newApp, app.DefaultNodeHome),
 		snapshot.Cmd(newApp),
 	)
 
-	server.AddCommands(rootCmd, app.DefaultNodeHome, newApp, appExport, addModuleInitFlags)
+	server.AddCommandsWithStartCmdOptions(rootCmd, app.DefaultNodeHome, newApp, appExport, server.StartCmdOptions{
+		AddFlags: addModuleInitFlags,
+	})
 
 	// add keybase, auxiliary RPC, query, genesis, and tx child commands
 	rootCmd.AddCommand(
 		server.StatusCommand(),
-		genesisCommand(txConfig, basicManager),
+		genutilcli.Commands(txConfig, basicManager, app.DefaultNodeHome),
 		queryCommand(),
 		txCommand(),
 		keys.Commands(),
@@ -56,20 +60,10 @@ func initRootCmd(
 
 }
 
+// addModuleInitFlags adds more flags to the start command.
 func addModuleInitFlags(startCmd *cobra.Command) {
-	crisis.AddModuleInitFlags(startCmd)
 	wasm.AddModuleInitFlags(startCmd)
 
-}
-
-// genesisCommand builds genesis-related `bcnad genesis` command. Users may provide application specific commands as a parameter
-func genesisCommand(txConfig client.TxConfig, basicManager module.BasicManager, cmds ...*cobra.Command) *cobra.Command {
-	cmd := genutilcli.Commands(txConfig, basicManager, app.DefaultNodeHome)
-
-	for _, subCmd := range cmds {
-		cmd.AddCommand(subCmd)
-	}
-	return cmd
 }
 
 func queryCommand() *cobra.Command {
@@ -83,7 +77,7 @@ func queryCommand() *cobra.Command {
 	}
 
 	cmd.AddCommand(
-		rpc.QueryEventForTxCmd(),
+		rpc.WaitTxCmd(),
 		rpc.ValidatorCommand(),
 		server.QueryBlockCmd(),
 		authcmd.QueryTxsByEventsCmd(),
@@ -91,7 +85,6 @@ func queryCommand() *cobra.Command {
 		authcmd.QueryTxCmd(),
 		server.QueryBlockResultsCmd(),
 	)
-	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
 }
@@ -117,7 +110,6 @@ func txCommand() *cobra.Command {
 		authcmd.GetDecodeCommand(),
 		authcmd.GetSimulateCmd(),
 	)
-	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
 }
@@ -131,15 +123,11 @@ func newApp(
 ) servertypes.Application {
 	baseappOptions := server.DefaultBaseappOptions(appOpts)
 
-	app, err := app.New(
+	return app.New(
 		logger, db, traceStore, true,
 		appOpts,
 		baseappOptions...,
 	)
-	if err != nil {
-		panic(err)
-	}
-	return app
 }
 
 // appExport creates a new app (optionally at a given height) and exports state.
@@ -153,10 +141,7 @@ func appExport(
 	appOpts servertypes.AppOptions,
 	modulesToExport []string,
 ) (servertypes.ExportedApp, error) {
-	var (
-		bApp *app.App
-		err  error
-	)
+	var bApp *app.App
 
 	// this check is necessary as we use the flag in x/upgrade.
 	// we can exit more gracefully by checking the flag here.
@@ -170,24 +155,14 @@ func appExport(
 		return servertypes.ExportedApp{}, errors.New("appOpts is not viper.Viper")
 	}
 
-	// overwrite the FlagInvCheckPeriod
-	viperAppOpts.Set(server.FlagInvCheckPeriod, 1)
 	appOpts = viperAppOpts
-
 	if height != -1 {
-		bApp, err = app.New(logger, db, traceStore, false, appOpts)
-		if err != nil {
-			return servertypes.ExportedApp{}, err
-		}
-
+		bApp = app.New(logger, db, traceStore, false, appOpts)
 		if err := bApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	} else {
-		bApp, err = app.New(logger, db, traceStore, true, appOpts)
-		if err != nil {
-			return servertypes.ExportedApp{}, err
-		}
+		bApp = app.New(logger, db, traceStore, true, appOpts)
 	}
 
 	return bApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs, modulesToExport)

@@ -1,37 +1,27 @@
 version: 1
 validation: sovereign
+default_denom: ubcna
 accounts: 
 - name: alice
   coins:
-  - 300000000ubcna
+  - 20000token
+  - 200000000ubcna
 - name: bob
   coins:
-  - 200000000ubcna
+  - 10000token
+  - 100000000ubcna
 client:
   openapi:
-    path: docs/static/openapi.yml
+    path: docs/static/openapi.json
 faucet:
   name: bob
   coins:
-  - 100000ubcna
+  - 5token
+  - 100000stake
 validators:
 - name: alice
   bonded: 100000000ubcna
-genesis:
- app_state:
-   staking:
-     params:
-       bond_denom: "ubcna"
-   crisis:
-     constant_fee:
-       denom: "ubcna"
-       amount: "1000"
-   mint:
-     params:
-       mint_denom: "ubcna"
-   gov:
-     deposit_params:
-       min_deposit:
-         - denom: "ubcna"
-           amount: "10000000"
- keyring-backend: test/os
+- name: validator1
+  bonded: 200000000ubcna
+- name: validator2
+  bonded: 100000000ubcna

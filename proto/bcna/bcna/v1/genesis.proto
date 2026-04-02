@@ -1,0 +1,17 @@
+syntax = "proto3";
+package bcna.bcna.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "bcna/bcna/v1/params.proto";
+
+option go_package = "bcna/x/bcna/types";
+
+// GenesisState defines the bcna module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

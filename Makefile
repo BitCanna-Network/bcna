@@ -1,166 +1,105 @@
-#!/usr/bin/make -f
-
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git log -1 --format='%H')
-GO_VERSION := "1.24"
-BUILD_DIR ?= $(CURDIR)/build
+APPNAME := bcna
 
-# don't override user values
+# do not override user values
 ifeq (,$(VERSION))
-  VERSION := $(shell git describe --tags)
-  # if VERSION is empty, then populate it with branch's name and raw commit hash
+  VERSION := $(shell git describe --exact-match 2>/dev/null)
+  # if VERSION is empty, then populate it with branch name and raw commit hash
   ifeq (,$(VERSION))
     VERSION := $(BRANCH)-$(COMMIT)
   endif
 endif
 
-PACKAGES_SIMTEST=$(shell go list ./... | grep '/simulation')
-LEDGER_ENABLED ?= true
-SDK_PACK := $(shell go list -m github.com/cosmos/cosmos-sdk | sed  's/ /\@/g')
-TM_VERSION := $(shell go list -m github.com/cometbft/cometbft | sed 's:.* ::') # grab everything after the space in "github.com/cometbft/cometbft v0.37.0"
-BUILDDIR ?= $(CURDIR)/build
-DOCKER := $(shell which docker)
-DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf:1.7.0
+# Update the ldflags with the app, client & server names
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=$(APPNAME) \
+	-X github.com/cosmos/cosmos-sdk/version.AppName=$(APPNAME)d \
+	-X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
+	-X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT)
 
-export GO111MODULE = on
+BUILD_FLAGS := -ldflags '$(ldflags)'
 
-# process build tags
+##############
+###  Test  ###
+##############
 
-build_tags = netgo
-ifeq ($(LEDGER_ENABLED),true)
-  ifeq ($(OS),Windows_NT)
-    GCCEXE = $(shell where gcc.exe 2> NUL)
-    ifeq ($(GCCEXE),)
-      $(error gcc.exe not installed for ledger support, please install or set LEDGER_ENABLED=false)
-    else
-      build_tags += ledger
-    endif
-  else
-    UNAME_S = $(shell uname -s)
-    ifeq ($(UNAME_S),OpenBSD)
-      $(warning OpenBSD detected, disabling ledger support (https://github.com/cosmos/cosmos-sdk/issues/1988))
-    else
-      GCC = $(shell command -v gcc 2> /dev/null)
-      ifeq ($(GCC),)
-        $(error gcc not installed for ledger support, please install or set LEDGER_ENABLED=false)
-      else
-        build_tags += ledger
-      endif
-    endif
-  endif
-endif
+test-unit:
+	@echo Running unit tests...
+	@go test -mod=readonly -v -timeout 30m ./...
 
-ifeq (cleveldb,$(findstring cleveldb,$(bitcanna_BUILD_OPTIONS)))
-  build_tags += gcc cleveldb
-endif
-build_tags += $(BUILD_TAGS)
-build_tags := $(strip $(build_tags))
+test-race:
+	@echo Running unit tests with race condition reporting...
+	@go test -mod=readonly -v -race -timeout 30m ./...
 
-whitespace :=
-whitespace += $(whitespace)
-comma := ,
-build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
+test-cover:
+	@echo Running unit tests and creating coverage report...
+	@go test -mod=readonly -v -timeout 30m -coverprofile=$(COVER_FILE) -covermode=atomic ./...
+	@go tool cover -html=$(COVER_FILE) -o $(COVER_HTML_FILE)
+	@rm $(COVER_FILE)
 
-# process linker flags
+bench:
+	@echo Running unit tests with benchmarking...
+	@go test -mod=readonly -v -timeout 30m -bench=. ./...
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=bcna \
-		  -X github.com/cosmos/cosmos-sdk/version.AppName=bcnad \
-		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
-		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)" \
-		  -X github.com/cometbft/cometbft/version.TMCoreSemVer=$(TM_VERSION)
+test: govet govulncheck test-unit
 
-ifeq (cleveldb,$(findstring cleveldb,$(bitcanna_BUILD_OPTIONS)))
-  ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=cleveldb
-endif
-ifeq (,$(findstring nostrip,$(bitcanna_BUILD_OPTIONS)))
-  ldflags += -w -s
-endif
-ifeq ($(LINK_STATICALLY),true)
-        ldflags += -linkmode=external -extldflags "-Wl,-z,muldefs -static"
-endif
-ldflags += $(LDFLAGS)
-ldflags := $(strip $(ldflags))
+.PHONY: test test-unit test-race test-cover bench
 
-BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
-# check for nostrip option
-ifeq (,$(findstring nostrip,$(bitcanna_BUILD_OPTIONS)))
-  BUILD_FLAGS += -trimpath
-endif
+#################
+###  Install  ###
+#################
 
-#$(info $$BUILD_FLAGS is [$(BUILD_FLAGS)])
+all: install
 
+install:
+	@echo "--> ensure dependencies have not been modified"
+	@go mod verify
+	@echo "--> installing $(APPNAME)d"
+	@go install $(BUILD_FLAGS) -mod=readonly ./cmd/$(APPNAME)d
 
-all: check-go-version install
+.PHONY: all install
 
-install: check-go-version go.sum
-	go install -mod=readonly $(BUILD_FLAGS)  ./...
+##################
+###  Protobuf  ###
+##################
 
-build: check-go-version
-	go build $(BUILD_FLAGS) -o $(BUILD_DIR)/ ./...
+# Use this target if you do not want to use Ignite for generating proto files
 
-BUILD_TARGETS := build install
-
-build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64
-
-build-reproducible-amd64:
-	ARCH=x86_64 PLATFORM=linux/amd64 $(MAKE) build-reproducible-generic
-
-build-reproducible-arm64:
-	ARCH=aarch64 PLATFORM=linux/arm64 $(MAKE) build-reproducible-generic
-
-build-reproducible-generic: go.sum
-	$(DOCKER) rm $(subst /,-,latest-build-$(PLATFORM)) || true
-	DOCKER_BUILDKIT=1 $(DOCKER) build -t latest-build-$(PLATFORM) \
-		--build-arg ARCH=$(ARCH) \
-		--build-arg GO_VERSION=$(GO_VERSION) \
-		--build-arg PLATFORM=$(PLATFORM) \
-		--build-arg VERSION="$(VERSION)" \
-		-f Dockerfile .
-	mkdir -p build
-	$(DOCKER) create -ti --name $(subst /,-,latest-build-$(PLATFORM)) latest-build-$(PLATFORM) bcnad
-	$(DOCKER) cp -a $(subst /,-,latest-build-$(PLATFORM)):/usr/local/bin/bcnad $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM))
-	tar -czvf $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM)).tar.gz -C $(BUILD_DIR) bcnad_$(subst /,_,$(PLATFORM))
-	rm $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM))
-	sha256sum $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM)).tar.gz >> $(BUILD_DIR)/bcnad_sha256.txt
-
-# Add check to make sure we are using the proper Go version before proceeding with anything
-check-go-version:
-	@if ! go version | grep -q "go$(GO_VERSION)"; then \
-		echo "\033[0;31mERROR:\033[0m Go version $(GO_VERSION) is required for compiling BCNAD. It looks like you are using" "$(shell go version) \nThere are potential consensus-breaking changes that can occur when running binaries compiled with different versions of Go. Please download Go version $(GO_VERSION) and retry. Thank you!"; \
-		exit 1; \
-	fi
-
-clean:
-	@echo "--> Cleaning..."
-	@rm -rf $(BUILD_DIR)/**
-
-###############################################################################
-###                                Protobuf                                 ###
-###############################################################################
-
-containerProtoVer=0.13.0
-containerProtoImage=ghcr.io/cosmos/proto-builder:$(containerProtoVer)
+proto-deps:
+	@echo "Installing proto deps"
+	@echo "Proto deps present, run 'go tool' to see them"
 
 proto-gen:
-	@echo "Generating Protobuf files"
-	@$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace $(containerProtoImage) \
-		sh ./scripts/protocgen.sh;
+	@echo "Generating protobuf files..."
+	@ignite generate proto-go --yes
 
-docs:
-	@echo
-	@echo "=========== Generate Message ============"
-	@echo
-	./scripts/protoc-swagger-gen.sh
+.PHONY: proto-gen
 
-	statik -src=docs/static -dest=docs -f -m
-	@if [ -n "$(git status --porcelain)" ]; then \
-        echo "\033[91mSwagger docs are out of sync!!!\033[0m";\
-        exit 1;\
-    else \
-        echo "\033[92mSwagger docs are in sync\033[0m";\
-    fi
-	@echo
-	@echo "=========== Generate Complete ============"
-	@echo
-.PHONY: docs
+#################
+###  Linting  ###
+#################
+
+lint:
+	@echo "--> Running linter"
+	@go tool github.com/golangci/golangci-lint/cmd/golangci-lint run ./... --timeout 15m
+
+lint-fix:
+	@echo "--> Running linter and fixing issues"
+	@go tool github.com/golangci/golangci-lint/cmd/golangci-lint run ./... --fix --timeout 15m
+
+.PHONY: lint lint-fix
+
+###################
+### Development ###
+###################
+
+govet:
+	@echo Running go vet...
+	@go vet ./...
+
+govulncheck:
+	@echo Running govulncheck...
+	@go tool golang.org/x/vuln/cmd/govulncheck@latest
+	@govulncheck ./...
+
+.PHONY: govet govulncheck
