@@ -40,6 +40,9 @@ func (app *App) RegisterUpgradeHandlers() {
 				"capability", // not needed in ibc-go v10
 				"feeibc",     // remove ibc fee middleware (29-fee)
 			},
+			Added: []string{
+				"epochs", // New epoch module
+			},
 		}
 		app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
 	}
