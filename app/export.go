@@ -54,6 +54,7 @@ func (app *App) ExportAppStateAndValidators(forZeroHeight bool, jailAllowedAddrs
 //
 //	in favor of export at a block height
 func (app *App) prepForZeroHeightGenesis(ctx sdk.Context, jailAllowedAddrs []string) {
+	//nolint:staticcheck // QF1007: keep the conditional assignment explicit for clarity.
 	applyAllowedAddrs := false
 
 	// check if there is a allowed address list
