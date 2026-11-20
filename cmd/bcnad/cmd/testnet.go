@@ -79,7 +79,7 @@ func newTestnetApp(logger log.Logger, db dbm.DB, traceStore io.Writer, appOpts s
 func initAppForTestnet(app *app.App, args valArgs) *app.App {
 	// Required Changes:
 	//
-	ctx := app.App.NewUncachedContext(true, cmtproto.Header{})
+	ctx := app.NewUncachedContext(true, cmtproto.Header{})
 
 	pubkey := &ed25519.PubKey{Key: args.newValPubKey.Bytes()}
 	pubkeyAny, err := codectypes.NewAnyWithValue(pubkey)
@@ -121,7 +121,7 @@ func initAppForTestnet(app *app.App, args valArgs) *app.App {
 	for ; iterator.Valid(); iterator.Next() {
 		stakingStore.Delete(iterator.Key())
 	}
-	iterator.Close()
+	handleErr(iterator.Close())
 
 	// Remove all validators from last validators store
 	iterator, err = app.StakingKeeper.LastValidatorsIterator(ctx)
@@ -130,21 +130,21 @@ func initAppForTestnet(app *app.App, args valArgs) *app.App {
 	for ; iterator.Valid(); iterator.Next() {
 		stakingStore.Delete(iterator.Key())
 	}
-	iterator.Close()
+	handleErr(iterator.Close())
 
 	// Remove all validators from validators store
 	iterator = stakingStore.Iterator(stakingtypes.ValidatorsKey, storetypes.PrefixEndBytes(stakingtypes.ValidatorsKey))
 	for ; iterator.Valid(); iterator.Next() {
 		stakingStore.Delete(iterator.Key())
 	}
-	iterator.Close()
+	handleErr(iterator.Close())
 
 	// Remove all validators from unbonding queue
 	iterator = stakingStore.Iterator(stakingtypes.ValidatorQueueKey, storetypes.PrefixEndBytes(stakingtypes.ValidatorQueueKey))
 	for ; iterator.Valid(); iterator.Next() {
 		stakingStore.Delete(iterator.Key())
 	}
-	iterator.Close()
+	handleErr(iterator.Close())
 
 	// Add our validator to power and last validators store
 	handleErr(app.StakingKeeper.SetValidator(ctx, newVal))
@@ -169,7 +169,7 @@ func initAppForTestnet(app *app.App, args valArgs) *app.App {
 	newConsAddr := sdk.ConsAddress(args.newValAddr.Bytes())
 	newValidatorSigningInfo := slashingtypes.ValidatorSigningInfo{
 		Address:     newConsAddr.String(),
-		StartHeight: app.App.LastBlockHeight() - 1,
+		StartHeight: app.LastBlockHeight() - 1,
 		Tombstoned:  false,
 	}
 	_ = app.SlashingKeeper.SetValidatorSigningInfo(ctx, newConsAddr, newValidatorSigningInfo)

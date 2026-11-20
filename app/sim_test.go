@@ -65,11 +65,13 @@ func BenchmarkSimulation(b *testing.B) {
 	simcli.FlagSeedValue = time.Now().Unix()
 	simcli.FlagVerboseValue = true
 	simcli.FlagCommitValue = true
+	//nolint:staticcheck // SA1019: keep compatibility with the SDK simulation flag API.
 	simcli.FlagEnabledValue = true
 
 	config := simcli.NewConfigFromFlags()
 	config.ChainID = SimAppChainID
 
+	//nolint:staticcheck // SA1019: keep compatibility with the SDK simulation flag API.
 	db, dir, logger, skip, err := simtestutil.SetupSimulation(config, "leveldb-app-sim", "Simulation", simcli.FlagVerboseValue, simcli.FlagEnabledValue)
 	if skip {
 		b.Skip("skipping application simulation")
@@ -371,7 +373,9 @@ func TestAppStateDeterminism(t *testing.T) {
 	config := simcli.NewConfigFromFlags()
 	config.InitialBlockHeight = 1
 	config.ExportParamsPath = ""
+	//nolint:staticcheck // SA1019: retained for existing simulation test behavior.
 	config.OnOperation = true
+	//nolint:staticcheck // SA1019: retained for existing simulation test behavior.
 	config.AllInvariants = true
 	config.ChainID = SimAppChainID
 

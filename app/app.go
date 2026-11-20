@@ -89,7 +89,7 @@ type App struct {
 	AuthzKeeper           authzkeeper.Keeper
 	ConsensusParamsKeeper consensuskeeper.Keeper
 	CircuitBreakerKeeper  circuitkeeper.Keeper
-	ParamsKeeper          paramskeeper.Keeper
+	ParamsKeeper          paramskeeper.Keeper //nolint:staticcheck // SA1019: github.com/cosmos/cosmos-sdk/x/params/keeper.Keeper is deprecated: the params keeper is deprecated and will be removed in the next Cosmos SDK major release.
 
 	// ibc keepers
 	IBCKeeper           *ibckeeper.Keeper
@@ -215,7 +215,7 @@ func New(
 		if err := app.UpgradeKeeper.SetModuleVersionMap(ctx, app.ModuleManager.GetVersionMap()); err != nil {
 			return nil, err
 		}
-		return app.App.InitChainer(ctx, req)
+		return app.InitChainer(ctx, req)
 	})
 
 	if err := app.Load(loadLatest); err != nil {
