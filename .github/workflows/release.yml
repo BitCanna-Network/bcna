@@ -36,4 +36,5 @@ jobs:
           files: |
             build/bcnad_linux_arm64.tar.gz
             build/bcnad_linux_amd64.tar.gz
+            build/bcnad_darwin_amd64.tar.gz
             build/bcnad_sha256.txt

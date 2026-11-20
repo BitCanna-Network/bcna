@@ -2,7 +2,7 @@
 
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git log -1 --format='%H')
-GO_VERSION := "1.23"
+GO_VERSION := "1.26.7"
 BUILD_DIR ?= $(CURDIR)/build
 
 # don't override user values
@@ -101,13 +101,16 @@ build: check-go-version
 
 BUILD_TARGETS := build install
 
-build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64
+build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64 build-reproducible-darwin64
 
 build-reproducible-amd64:
 	ARCH=x86_64 PLATFORM=linux/amd64 $(MAKE) build-reproducible-generic
 
 build-reproducible-arm64:
 	ARCH=aarch64 PLATFORM=linux/arm64 $(MAKE) build-reproducible-generic
+
+build-reproducible-darwin64:
+	ARCH=x86_64 PLATFORM=macos/amd64 $(MAKE) build-reproducible-generic
 
 build-reproducible-generic: go.sum
 	$(DOCKER) rm $(subst /,-,latest-build-$(PLATFORM)) || true

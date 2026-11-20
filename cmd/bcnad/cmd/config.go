@@ -46,30 +46,20 @@ func initAppConfig() (string, interface{}) {
 	srvCfg.GRPCWeb.Enable = false
 	srvCfg.Mempool.MaxTxs = 5000
 
-	// srvCfg.BaseConfig.IAVLDisableFastNode = true // disable fastnode by default
-
 	customAppConfig := CustomAppConfig{
 		Config: *srvCfg,
 	}
 
-	// customAppTemplate := serverconfig.DefaultConfigTemplate
+	customAppTemplate := serverconfig.DefaultConfigTemplate
 	// Edit the default template file
 	//
-	customAppTemplate := serverconfig.DefaultConfigTemplate + `
-[wasm]
-# This is the maximum sdk gas (wasm and storage) that we allow for any x/wasm "smart" queries
-query_gas_limit = 3000000
-# This is the number of wasm vm instances we keep cached in memory for speed-up
-# Warning: this is currently unstable and may lead to crashes, best to keep for 0 unless testing locally
-lru_size = 0
-# in-memory cache for Wasm contracts. Set to 0 to disable.
-# The value is in MiB not bytes
-memory_cache_size = 300
-
-# Simulation gas limit is the max gas to be used in a tx simulation call.
-# When not set the consensus max block gas is used instead
-# simulation_gas_limit =
-`
+	// customAppTemplate := serverconfig.DefaultConfigTemplate + `
+	// [wasm]
+	// # This is the maximum sdk gas (wasm and storage) that we allow for any x/wasm "smart" queries
+	// query_gas_limit = 300000
+	// # This is the number of wasm vm instances we keep cached in memory for speed-up
+	// # Warning: this is currently unstable and may lead to crashes, best to keep for 0 unless testing locally
+	// lru_size = 0`
 
 	return customAppTemplate, customAppConfig
 }
