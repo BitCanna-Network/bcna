@@ -177,7 +177,7 @@ func initTestnetFiles(
 	appConfig := srvconfig.DefaultConfig()
 	appConfig.MinGasPrices = args.minGasPrices
 	appConfig.API.Enable = false
-	appConfig.BaseConfig.MinGasPrices = "0.0001" + sdk.DefaultBondDenom
+	appConfig.MinGasPrices = "0.0001" + sdk.DefaultBondDenom
 	appConfig.Telemetry.EnableHostnameLabel = false
 	appConfig.Telemetry.Enabled = false
 	appConfig.Telemetry.PrometheusRetentionTime = 0
@@ -448,7 +448,7 @@ func collectGenFiles(
 		nodeConfig.P2P.AllowDuplicateIP = true
 		nodeConfig.P2P.ListenAddress = "tcp://0.0.0.0:" + strconv.Itoa(26656-3*i)
 		nodeConfig.RPC.ListenAddress = "tcp://127.0.0.1:" + args.ports[i]
-		nodeConfig.BaseConfig.ProxyApp = "tcp://127.0.0.1:" + strconv.Itoa(26658-3*i)
+		nodeConfig.ProxyApp = "tcp://127.0.0.1:" + strconv.Itoa(26658-3*i)
 		nodeConfig.Instrumentation.PrometheusListenAddr = ":" + strconv.Itoa(26660+i)
 		nodeConfig.Instrumentation.Prometheus = true
 		cmtconfig.WriteConfigFile(filepath.Join(nodeConfig.RootDir, "config", "config.toml"), nodeConfig)
@@ -468,7 +468,7 @@ func collectGenFiles(
 	return nil
 }
 
-func copyFile(src, dstDir string) (int64, error) {
+func copyFile(src, dstDir string) (bytesCopied int64, err error) {
 	// Extract the file name from the source path
 	fileName := filepath.Base(src)
 
@@ -480,17 +480,25 @@ func copyFile(src, dstDir string) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	defer sourceFile.Close()
+	defer func() {
+		if closeErr := sourceFile.Close(); err == nil {
+			err = closeErr
+		}
+	}()
 
 	// Create the destination file
 	destinationFile, err := os.Create(dst)
 	if err != nil {
 		return 0, err
 	}
-	defer destinationFile.Close()
+	defer func() {
+		if closeErr := destinationFile.Close(); err == nil {
+			err = closeErr
+		}
+	}()
 
 	// Copy content from the source file to the destination file
-	bytesCopied, err := io.Copy(destinationFile, sourceFile)
+	bytesCopied, err = io.Copy(destinationFile, sourceFile)
 	if err != nil {
 		return 0, err
 	}
@@ -530,7 +538,7 @@ func isSubDir(src, dstDir string) (bool, error) {
 // generateRandomString generates a random string of the specified length.
 func generateRandomString(length int) string {
 	const charset = "abcdefghijklmnopqrstuvwxyz0123456789"
-	var seededRand *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
+	seededRand := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	b := make([]byte, length)
 	for i := range b {
