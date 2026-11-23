@@ -8,7 +8,7 @@
 
 BitCanna Network provides a decentralized payment network, supply chain and trust network for the legal cannabis industry by utilizing the BCNA coin.
 
-> [Current version (v4.0.1)](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.2) of our development uses Cosmos SDK v0.50.10 & CometBFT v0.38.15 & IBC-go v8.5.2
+> [Current version (v5.0.0)](https://github.com/BitCannaGlobal/bcna/releases/tag/v5.0.0) of our development uses Cosmos SDK v0.53.8 & CometBFT v0.38.26 & IBC-go v10.4.0
 
 These docs at Github are chain related. For more information about our coin, partners and roadmap visit:
 * Our website: https://www.bitcanna.network
@@ -24,8 +24,8 @@ Here are the minimal hardware configs required for running a validator/sentry no
 * 400 Mbit/s bandwidth (800Mbit/s - 1Gbit/s recommended)
 
 ## Software Requirements
-* Linux server (Ubuntu 20/22 server recommended)
-* Go version v1.23.3
+* Linux server (Ubuntu 22/24 server recommended)
+* Go version v1.26.7
 
 > Please avoid cheap VPS providers as a main validator (we suggest using it as a cheap backup). We advise to use a shared dedicated server or a high-end NVMe VPS.
 
@@ -46,6 +46,7 @@ Here are the minimal hardware configs required for running a validator/sentry no
 | 25th Jan 2024 16.35h CET    | 12.288.420   | [v3.0.2](https://github.com/BitCannaGlobal/bcna/releases/download/v3.0.2/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.0.2) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
 | 10th May 2024 16.55h CET    | 13.846.420   | [v3.1.0](https://github.com/BitCannaGlobal/bcna/releases/download/v3.1.0/bcna_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v3.1.0) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
 | 25th Nov 2024 17.20h CET    | 16.782.000   | [v4.0.1](https://github.com/BitCannaGlobal/bcna/releases/download/v4.0.1/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.1) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
+| 27th Nov 2026 16.00h UTC    | 27.890.114   | [v5.0.9](https://github.com/BitCannaGlobal/bcna/releases/download/v5.0.0/bcnad_linux_amd64.tar.gz)   |  [Link](https://github.com/BitCannaGlobal/bcna/releases/tag/v5.0.0) | [Doc](https://github.com/BitCannaGlobal/bcna/blob/main/last_upgrade.md) |
 
 > Current version: https://github.com/BitCannaGlobal/bcna/releases/tag/v4.0.2
 
@@ -75,13 +76,12 @@ This is an alternative way to get synced without having to download the entire c
 
 
 ##   3. Create a validator
-Your node must be fully synced in order to send the TX of validator creation and start to validate the network. You can check if your node has fully synced by comparing your logs and the latest block in the explorer (https://explorer.bitcanna.io/)
+Your node must be fully synced in order to send the TX of validator creation and start to validate the network. You can check if your node has fully synced by comparing your logs and the latest block in the explorer (https://explorer.bitcanna.network/)
 
 **You will need coins:**
 Send coins to your new address, you will need roughly 2 BCNA to run the validator (1 BCNA for self-delegation and a bit more for transactions).
 * https://app.osmosis.zone/
 * https://app.rango.exchange/
-* https://coinmerce.io/
 
 
 
@@ -156,7 +156,7 @@ bcnad tx staking create-validator \
     --gas-prices 0.001ubcna
 ```
 
-You can check the list of validators (also in [Explorer](https://explorer.bitcanna.io/validators)):
+You can check the list of validators (also in [Explorer](https://explorer.bitcanna.network/validators)):
 
 ```
 bcnad query staking validators --output json| jq
@@ -202,8 +202,8 @@ Follow this guide to install Cosmovisor on your node.
 # Links to important info
 
 ## Explorers:
-* [BitCanna Explorer](https://explorer.bitcanna.io)
-* [Ping-Pub explorer](https://ping.pub/bitcanna/uptime)
+* [Valopers](https://explorer.bitcanna.network)
+* [AtomScan](https://atomscan.com/bitcanna/)
 * [Valopers](https://bitcanna.valopers.com/)
 
 ## Wallets
@@ -222,7 +222,7 @@ Follow this guide to install Cosmovisor on your node.
 * [Cosmos Chain Registry](https://github.com/cosmos/chain-registry/tree/master/bitcanna)
 
 ## Archived Guides, FAQs & docs
-* [BitCanna Docs](https://docs.bitcanna.io)
+* [BitCanna Docs](https://docs.bitcanna.network)
 * [GitHub Testnet & DevNet archive](https://github.com/BitCannaGlobal/testnet-bcna-cosmos/tree/main/instructions)
 * [Current DevNet](https://github.com/BitCannaGlobal/bcna/tree/main/devnets/bitcanna-dev-1)
 * [Old Instructions guide](https://github.com/BitCannaGlobal/bcna/blob/main/archived_guides/instructions.md)
