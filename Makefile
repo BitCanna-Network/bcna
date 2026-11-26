@@ -2,7 +2,7 @@
 
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git log -1 --format='%H')
-GO_VERSION := "1.26.7"
+GO_VERSION := 1.26.7
 BUILD_DIR ?= $(CURDIR)/build
 
 # don't override user values
@@ -16,6 +16,7 @@ endif
 
 PACKAGES_SIMTEST=$(shell go list ./... | grep '/simulation')
 LEDGER_ENABLED ?= true
+CGO_ENABLED ?= 1
 SDK_PACK := $(shell go list -m github.com/cosmos/cosmos-sdk | sed  's/ /\@/g')
 TM_VERSION := $(shell go list -m github.com/cometbft/cometbft | sed 's:.* ::') # grab everything after the space in "github.com/cometbft/cometbft v0.37.0"
 BUILDDIR ?= $(CURDIR)/build
@@ -101,31 +102,34 @@ build: check-go-version
 
 BUILD_TARGETS := build install
 
-build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64 build-reproducible-darwin64
+build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64 build-reproducible-darwin-arm64
 
 build-reproducible-amd64:
-	ARCH=x86_64 PLATFORM=linux/amd64 $(MAKE) build-reproducible-generic
+	PLATFORM=linux/amd64 TARGET_GOOS=linux TARGET_GOARCH=amd64 $(MAKE) build-reproducible-generic
 
 build-reproducible-arm64:
-	ARCH=aarch64 PLATFORM=linux/arm64 $(MAKE) build-reproducible-generic
+	PLATFORM=linux/arm64 TARGET_GOOS=linux TARGET_GOARCH=arm64 $(MAKE) build-reproducible-generic
 
-build-reproducible-darwin64:
-	ARCH=x86_64 PLATFORM=macos/amd64 $(MAKE) build-reproducible-generic
+build-reproducible-darwin-arm64:
+	PLATFORM=linux/amd64 TARGET_GOOS=darwin TARGET_GOARCH=arm64 LEDGER_ENABLED=false CGO_ENABLED=0 $(MAKE) build-reproducible-generic
 
 build-reproducible-generic: go.sum
-	$(DOCKER) rm $(subst /,-,latest-build-$(PLATFORM)) || true
-	DOCKER_BUILDKIT=1 $(DOCKER) build -t latest-build-$(PLATFORM) \
-		--build-arg ARCH=$(ARCH) \
+	$(DOCKER) rm latest-build-$(TARGET_GOOS)-$(TARGET_GOARCH) || true
+	DOCKER_BUILDKIT=1 $(DOCKER) build --target artifact -t latest-build-$(TARGET_GOOS)-$(TARGET_GOARCH) \
 		--build-arg GO_VERSION=$(GO_VERSION) \
 		--build-arg PLATFORM=$(PLATFORM) \
+		--build-arg TARGET_GOOS=$(TARGET_GOOS) \
+		--build-arg TARGET_GOARCH=$(TARGET_GOARCH) \
+		--build-arg LEDGER_ENABLED=$(LEDGER_ENABLED) \
+		--build-arg CGO_ENABLED=$(CGO_ENABLED) \
 		--build-arg VERSION="$(VERSION)" \
 		-f Dockerfile .
 	mkdir -p build
-	$(DOCKER) create -ti --name $(subst /,-,latest-build-$(PLATFORM)) latest-build-$(PLATFORM) bcnad
-	$(DOCKER) cp -a $(subst /,-,latest-build-$(PLATFORM)):/usr/local/bin/bcnad $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM))
-	tar -czvf $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM)).tar.gz -C $(BUILD_DIR) bcnad_$(subst /,_,$(PLATFORM))
-	rm $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM))
-	sha256sum $(BUILD_DIR)/bcnad_$(subst /,_,$(PLATFORM)).tar.gz >> $(BUILD_DIR)/bcnad_sha256.txt
+	$(DOCKER) create -ti --name latest-build-$(TARGET_GOOS)-$(TARGET_GOARCH) latest-build-$(TARGET_GOOS)-$(TARGET_GOARCH) /usr/local/bin/bcnad
+	$(DOCKER) cp -a latest-build-$(TARGET_GOOS)-$(TARGET_GOARCH):/usr/local/bin/bcnad $(BUILD_DIR)/bcnad_$(TARGET_GOOS)_$(TARGET_GOARCH)
+	tar -czvf $(BUILD_DIR)/bcnad_$(TARGET_GOOS)_$(TARGET_GOARCH).tar.gz -C $(BUILD_DIR) bcnad_$(TARGET_GOOS)_$(TARGET_GOARCH)
+	rm $(BUILD_DIR)/bcnad_$(TARGET_GOOS)_$(TARGET_GOARCH)
+	sha256sum $(BUILD_DIR)/bcnad_$(TARGET_GOOS)_$(TARGET_GOARCH).tar.gz >> $(BUILD_DIR)/bcnad_sha256.txt
 
 # Add check to make sure we are using the proper Go version before proceeding with anything
 check-go-version:
