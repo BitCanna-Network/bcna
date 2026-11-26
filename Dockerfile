@@ -2,13 +2,13 @@ ARG IMG_TAG=latest
 ARG PLATFORM="linux/amd64"
 ARG GO_VERSION=1.26.7
 
-FROM --platform=${PLATFORM} golang:${GO_VERSION}-alpine as builder
+FROM --platform=${PLATFORM} golang:${GO_VERSION}-alpine AS builder
 WORKDIR /src/app/
 COPY go.mod go.sum* ./
 RUN go mod download
 COPY . .
 
-ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev python3
+ENV PACKAGES="curl make git libc-dev bash gcc linux-headers eudev-dev python3"
 RUN apk add --no-cache $PACKAGES
 RUN set -eux; apk add --no-cache ca-certificates build-base;
 

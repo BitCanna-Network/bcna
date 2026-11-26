@@ -36,7 +36,6 @@ jobs:
         with:
           tag_name: ${{ github.event.release.tag_name || inputs.tag }}
           files: |
-            build/bcnad_linux_arm64.tar.gz
             build/bcnad_linux_amd64.tar.gz
             build/bcnad_darwin_arm64.tar.gz
             build/bcnad_sha256.txt

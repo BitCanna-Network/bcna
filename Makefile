@@ -102,13 +102,10 @@ build: check-go-version
 
 BUILD_TARGETS := build install
 
-build-reproducible-all: build-reproducible-amd64 build-reproducible-arm64 build-reproducible-darwin-arm64
+build-reproducible-all: build-reproducible-amd64 build-reproducible-darwin-arm64
 
 build-reproducible-amd64:
 	PLATFORM=linux/amd64 TARGET_GOOS=linux TARGET_GOARCH=amd64 $(MAKE) build-reproducible-generic
-
-build-reproducible-arm64:
-	PLATFORM=linux/arm64 TARGET_GOOS=linux TARGET_GOARCH=arm64 $(MAKE) build-reproducible-generic
 
 build-reproducible-darwin-arm64:
 	PLATFORM=linux/amd64 TARGET_GOOS=darwin TARGET_GOARCH=arm64 LEDGER_ENABLED=false CGO_ENABLED=0 $(MAKE) build-reproducible-generic
