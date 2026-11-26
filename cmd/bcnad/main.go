@@ -7,14 +7,16 @@ import (
 	clienthelpers "cosmossdk.io/client/v2/helpers"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"github.com/BitCannaGlobal/bcna/app"
-	"github.com/BitCannaGlobal/bcna/cmd/bcnad/cmd"
+	"bcna/app"
+	"bcna/cmd/bcnad/cmd"
 )
 
 func main() {
 	rootCmd := cmd.NewRootCmd()
 	if err := svrcmd.Execute(rootCmd, clienthelpers.EnvPrefix, app.DefaultNodeHome); err != nil {
-		fmt.Fprintln(rootCmd.OutOrStderr(), err)
+		if _, writeErr := fmt.Fprintln(rootCmd.OutOrStderr(), err); writeErr != nil {
+			os.Exit(1)
+		}
 		os.Exit(1)
 	}
 }
