@@ -1,0 +1,9 @@
+version: "2"
+
+linters:
+  exclusions:
+    rules:
+      - path: 'app/sim_test\.go'
+        linters:
+          - staticcheck
+        text: 'FlagEnabledValue is deprecated'
